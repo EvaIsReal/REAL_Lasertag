@@ -1,0 +1,16 @@
+Weapons:
+  Default:
+    material: WOODEN_HOE
+    key: default
+    length: 30
+    color:
+      r: 0
+      g: 0
+      b: 255
+    damage: 2.5
+    particleSize: 2.5
+    soundDistance: 7
+    xpOnKill: 3
+    sound: ENTITY_FIREWORK_ROCKET_BLAST
+    vol: 1
+    pitch: 2

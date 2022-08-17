@@ -1,0 +1,10 @@
+name: Lasertag
+version: '${project.version}'
+main: de.iv.game.lasertag.core.Main
+api-version: 1.19
+prefix: LASERTAG
+authors: [ Iv ]
+description: Lasertag minigame
+commands:
+  givegun:
+    description: Gives you a gun
