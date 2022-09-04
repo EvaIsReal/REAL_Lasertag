@@ -1,16 +1,47 @@
+# Use this file to create your own weapons. Please be aware, that any inconsistency regarding formatting or parsing values
+# can lead to errors reading and compiling the file.
+# To create your own weapons, copy the 'Default' weapon, create a new entry under 'Weapons', and paste the default weapons value.
+# Please keep in mind, that every 'key' of a weapon needs to be unique, or it can lead to errors. You may delete my comments as well.
+
+# You can find every usable sound here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+# You can find every usable material here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+
+# If you need any help regarding this plugin, feel free to join our discord-server at <discord_link> and leave your questions.
+
+# DO NOT DELETE THIS TAG!
 Weapons:
+# Your weapons name
   Default:
+# The material of the item
+# Please don't use blocks as weapon materials, or you may run into errors.
     material: WOODEN_HOE
+# A UNIQUE key for identifying the weapon. Assigning the same key twice can lead to errors!
     key: default
+# The length of the particle line
     length: 30
+# The color of the lines particles. 0 is minimum, 255 is max.
     color:
       r: 0
       g: 0
       b: 255
+# The damage a player receives, when standing in the particle line while casting. 1.0 unit == 0.5 hearths.
     damage: 2.5
-    particleSize: 2.5
+# The size of the particles. Note that the particles speed shrinks with increasing size. Try to keep the amount lower than 1.
+    particleSize: 0.5
+# The radius in blocks where players hear the shot-sound.
     soundDistance: 7
+# The amount of xp a player gets when killing another player using the gun.
     xpOnKill: 3
+# The amount of coins to spend on this item in the shop.
+    shopPrice: 0
+# The sound played when firing the weapon
     sound: ENTITY_FIREWORK_ROCKET_BLAST
+# The volume of the sound. 1 == played, 0 == not played
     vol: 1
+# The pitch of the sound. 1 == normal, 2 == high pitched, 0 == low pitched.
     pitch: 2
+# The amount of milliseconds during which the weapon is unable to fire.
+    cooldownMillis: 500
+# Marks the weapon as 'default'. Weapons marked as default will be given to the players when they join for the first time.
+# Therefore, none of the default items will be available in the shop menu.
+    isDefault: true

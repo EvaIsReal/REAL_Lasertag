@@ -1,0 +1,23 @@
+# This file is used to configure the games scoreboard and bossbar.
+# Please use '&' as formatter if you want to recolor messages using this file.
+
+# The title of the scoreboard. It will be displayed at the top.
+title: "  &5&lL&l&d&laser&5&lT&d&lag  "
+# Use this tag to add lines to the scoreboard.
+lines:
+# This is a line-entry. It consists of a line number, here '0' and an actual value 'display_value'.
+# The smaller the number, the lower the line.
+# Every line must be UNIQUE or else the plugin will ignore it.
+  12: " "
+  11: "&7Score"
+  10: "&5%score%"
+  9: "  "
+  8: "&7Level"
+  7: "&b%level%"
+  6: "   "
+  5: "&7Coins"
+  4: "&6%balance%"
+  3: "     "
+  2: "&7Gun"
+  1: "&d%selected_gun%"
+  0: "      "

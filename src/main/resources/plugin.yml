@@ -8,3 +8,11 @@ description: Lasertag minigame
 commands:
   givegun:
     description: Gives you a gun
+  menu:
+    description: Opens the base menu
+  inventoryitems:
+    aliases:
+      - ii
+  setlevel:
+  getlevel:
+  accreset:

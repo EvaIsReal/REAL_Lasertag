@@ -16,6 +16,8 @@ public class FileManager {
     public static void registerConfigs() {
         //add configs to list
         configs.add(new Config("weapons.yml", Main.getInstance().getDataFolder()));
+        configs.add(new Config("config.yml", Main.getInstance().getDataFolder()));
+        configs.add(new Config("scoreboard.yml", Main.getInstance().getDataFolder()));
     }
 
     public static void save(String fileName) {

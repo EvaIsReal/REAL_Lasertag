@@ -1,0 +1,16 @@
+# Use this file to configure the settings of this plugin.
+# If you need to reset this file, you can find the default version in the spigot thread.
+# SPIGOT THREAD: <Link>
+# Please use '&' as formatter if you want to recolor messages using this file.
+
+# If you need any help regarding this plugin, feel free to join our discord-server at <discord_link> and leave your questions.
+
+plugin_prefix: '&5&lL&l&d&laser&5&lT&d&lag'
+
+# This function determines how much xp is needed to reach an arbitrary level l. This can be written as s(l) = 0.75*l^2+7
+# I highly recommend doing a Database reset after changing this number, because it can lead to confusion with the value before.
+score_function: 0.75*l^2+7
+
+# This function determines the respective level for an arbitrary score. This function is the product of solving 'score_function' for l.
+# If you change one of those functions, make sure to solve the other one for the unknown value.
+level_function: ((s-7)/0.75)^(1/2)
