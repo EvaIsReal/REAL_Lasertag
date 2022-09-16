@@ -17,7 +17,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class OverlayManager {
 
-    private static FileConfiguration cfg = FileManager.getConfig("scoreboard.yml").getCfg();
+    private static FileConfiguration cfg = FileManager.getConfig("scoreboard.yml").toCfg();
 
     public static Scoreboard getBaseScoreboard(Player player) {
         Scoreboard s = Bukkit.getScoreboardManager().getNewScoreboard();

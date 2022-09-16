@@ -11,6 +11,9 @@ import de.iv.iutils.items.ItemBuilder;
 import de.iv.iutils.menus.InventoryMapper;
 import de.iv.iutils.menus.Menu;
 import de.iv.iutils.menus.MenuManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -48,6 +51,11 @@ public class InventoryMenu extends Menu {
             String value = e.getCurrentItem().getItemMeta().getPersistentDataContainer().get(new NamespacedKey(Main.getInstance(), "game_item"), PersistentDataType.STRING);
             if(value.startsWith("gun_")) {
                 GameItem item = API.getGameItem(value.substring(4));
+                /*if(API.getAppliedGun(p.getUniqueId().toString()).key().equals(item.key())) {
+                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ILib.color("&c&lThis weapon is already selected.")));
+                    p.playSound(p, Sound.BLOCK_NOTE_BLOCK_PLING, 1, -1);
+                    return;
+                }*/
                 API.applyGun(item.key(), p.getUniqueId().toString());
                 p.getInventory().setItem(0, item.invItem());
                 p.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);

@@ -5,7 +5,9 @@
 
 # If you need any help regarding this plugin, feel free to join our discord-server at <discord_link> and leave your questions.
 
-plugin_prefix: '&5&lL&l&d&laser&5&lT&d&lag'
+plugin_prefix: '&5&lL&l&d&laser&5&lT&d&lag &8| &7'
+
+error_prefix: '&4&lERROR &8| &c'
 
 # This function determines how much xp is needed to reach an arbitrary level l. This can be written as s(l) = 0.75*l^2+7
 # I highly recommend doing a Database reset after changing this number, because it can lead to confusion with the value before.
@@ -14,3 +16,5 @@ score_function: 0.75*l^2+7
 # This function determines the respective level for an arbitrary score. This function is the product of solving 'score_function' for l.
 # If you change one of those functions, make sure to solve the other one for the unknown value.
 level_function: ((s-7)/0.75)^(1/2)
+
+player_not_found_exception: "%player_name% is not online and, or isn't registered in server-data."

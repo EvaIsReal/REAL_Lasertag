@@ -1,10 +1,8 @@
 package de.iv.game.lasertag.elements;
 
 import de.iv.game.lasertag.core.Main;
-import de.iv.game.lasertag.core.Uni;
 import de.iv.game.lasertag.exceptions.ConfigException;
 import de.iv.game.lasertag.fs.FileManager;
-import de.iv.game.lasertag.util.CooldownManager;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,10 +14,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import javax.swing.plaf.basic.BasicButtonUI;
-import java.sql.SQLOutput;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
@@ -52,7 +47,7 @@ public class WeaponManager implements Listener {
 
 
     public static void compileWeapons() {
-        FileConfiguration cfg = FileManager.getConfig("weapons.yml").getCfg();
+        FileConfiguration cfg = FileManager.getConfig("weapons.yml").toCfg();
         for (String e : getYamlWeapons()) {
             if (cfg.getConfigurationSection("Weapons." + e) != null) {
                 String key = "Weapons." + e;
@@ -78,9 +73,9 @@ public class WeaponManager implements Listener {
         String key = "Weapons." + e + ".color.";
         int r, g, b;
         try {
-            r = FileManager.getConfig("weapons.yml").getCfg().getInt(key + "r", 0);
-            g = FileManager.getConfig("weapons.yml").getCfg().getInt(key + "g", 0);
-            b = FileManager.getConfig("weapons.yml").getCfg().getInt(key + "b", 0);
+            r = FileManager.getConfig("weapons.yml").toCfg().getInt(key + "r", 0);
+            g = FileManager.getConfig("weapons.yml").toCfg().getInt(key + "g", 0);
+            b = FileManager.getConfig("weapons.yml").toCfg().getInt(key + "b", 0);
 
             return Color.fromRGB(r, g, b);
         } catch (NumberFormatException ex) {
@@ -110,7 +105,7 @@ public class WeaponManager implements Listener {
     }
 
     public static List<String> getYamlWeapons() {
-        return FileManager.getConfig("weapons.yml").getCfg().getConfigurationSection("Weapons").getKeys(false).stream().toList();
+        return FileManager.getConfig("weapons.yml").toCfg().getConfigurationSection("Weapons").getKeys(false).stream().toList();
     }
 
     public static ArrayList<Weapon> getActiveWeapons() {

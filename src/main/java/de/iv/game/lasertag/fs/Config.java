@@ -8,7 +8,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.NoSuchFileException;
 
 public class Config {
 
@@ -48,7 +47,7 @@ public class Config {
         return destination;
     }
 
-    public FileConfiguration getCfg() {
+    public FileConfiguration toCfg() {
         return YamlConfiguration.loadConfiguration(file);
     }
     public File getSource() {

@@ -45,6 +45,8 @@ public final class Main extends JavaPlugin {
 
         updateOverlay(Bukkit.getOnlinePlayers());
 
+        LasertagCommandManager lasertagCommandManager = new LasertagCommandManager();
+
         registerCommands();
         registerListeners(getServer().getPluginManager());
         Bukkit.getConsoleSender().sendMessage(ILib.color(Uni.PREFIX + "&aLasertag plugin started successfully."));
@@ -62,10 +64,10 @@ public final class Main extends JavaPlugin {
     private void registerCommands() {
         getCommand("givegun").setExecutor(new GiveGunCommand());
         getCommand("menu").setExecutor(new MenuCommand());
-        getCommand("inventoryitems").setExecutor(new InventoryItemCommand());
         getCommand("setlevel").setExecutor(new GameLevelCommand());
         getCommand("accreset").setExecutor(new UserResetCommand());
         getCommand("getLevel").setExecutor(new GetLevelCommand());
+        getCommand("lasertag").setExecutor(new LasertagCommandManager());
     }
 
     @Override
@@ -73,6 +75,9 @@ public final class Main extends JavaPlugin {
         // Plugin shutdown logic
         FileManager.getConfigs().forEach(c -> FileManager.save(c.getName()));
         SQLite.disconnect();
+        Bukkit.getOnlinePlayers().forEach(p -> {
+            p.kickPlayer(ILib.color("&c&lServer is restarting..."));
+        });
     }
 
     private void initSQL() {

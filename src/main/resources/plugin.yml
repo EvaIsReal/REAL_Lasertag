@@ -16,3 +16,7 @@ commands:
   setlevel:
   getlevel:
   accreset:
+  lasertag:
+    aliases:
+      - lt
+    description: Commands for using the lasertag plugin's functions

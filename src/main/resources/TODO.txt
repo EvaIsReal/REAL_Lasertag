@@ -1,0 +1,3 @@
+- Remove debug cmds
+- toggleable chat formatting
+- finish commands

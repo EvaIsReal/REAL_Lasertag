@@ -183,7 +183,7 @@ public class API {
     }
 
     public static int getLevelFromScore(double score) {
-        return (int) ILib.eval(FileManager.getConfig("config.yml").getCfg().getString("level_function").replace("s", String.valueOf(score)));
+        return (int) ILib.eval(FileManager.getConfig("config.yml").toCfg().getString("level_function").replace("s", String.valueOf(score)));
     }
 
     public static void setPlayerLevel(int level, String uuid) {
@@ -193,7 +193,7 @@ public class API {
     }
 
     public static double getRequiredScore(int level) {
-        return round(ILib.eval(FileManager.getConfig("config.yml").getCfg().getString("score_function").replace("l", String.valueOf(level))), 2);
+        return round(ILib.eval(FileManager.getConfig("config.yml").toCfg().getString("score_function").replace("l", String.valueOf(level))), 2);
     }
 
 

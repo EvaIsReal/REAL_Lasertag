@@ -1,40 +1,28 @@
 package de.iv.game.lasertag.core;
 
-import com.google.gson.Gson;
 import de.iv.ILib;
 import de.iv.game.lasertag.elements.Weapon;
-import de.iv.game.lasertag.elements.WeaponManager;
 import de.iv.game.lasertag.events.GamePlayerDeathEvent;
 import de.iv.game.lasertag.fs.FileManager;
-import de.iv.iutils.sqlite.SQLite;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.sql.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Uni {
 
 
-    public static final String PREFIX = ILib.color(FileManager.getConfig("config.yml").getCfg().getString("plugin_prefix") + " ");
+    public static final String PREFIX = ILib.color(FileManager.getConfig("config.yml").toCfg().getString("plugin_prefix") + " ");
+    public static final String ERROR = ILib.color(FileManager.getConfig("config.yml").toCfg().getString("error_prefix") + " ");
 
     public static void raycast(PlayerInteractEvent e, Color color, int length, float size, double damage, Sound sound, float vol, float pitch, int soundDistance, Weapon weapon) {
         Location start = e.getPlayer().getEyeLocation();
         Vector direction = start.getDirection();
-        e.getPlayer().playSound(e.getPlayer(), sound, vol, pitch);
+        getNearbyPlayers(e.getPlayer().getLocation(), soundDistance).forEach(p -> p.playSound(e.getPlayer(), sound, vol, pitch));
         for (double i = 1; i < length; i += 0.15) {
             direction.multiply(i);
             start.add(direction);
@@ -56,7 +44,7 @@ public class Uni {
     }
 
     public static HashMap<Integer, String> compileScoreboardLines() {
-        FileConfiguration cfg = FileManager.getConfig("scoreboard.yml").getCfg();
+        FileConfiguration cfg = FileManager.getConfig("scoreboard.yml").toCfg();
         HashMap<Integer, String> map = new HashMap<>();
         for (String key : cfg.getConfigurationSection("lines").getKeys(false)) {
             try {
@@ -68,7 +56,16 @@ public class Uni {
         return map;
     }
 
+    public static List<Player> getNearbyPlayers(Location loc, int size) {
+        List<Player> players = new ArrayList<>();
 
+        for(Player all : Bukkit.getOnlinePlayers()) {
+            if(loc.distance(all.getLocation()) <= size) {
+                players.add(all);
+            }
+        }
+        return players;
+    }
 
     public static void XPBarProgress(Player player, long current, long max) {
         float progress = Math.floorDiv(current, max);
