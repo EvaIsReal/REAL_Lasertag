@@ -2,9 +2,6 @@ package de.iv.game.lasertag.commands;
 
 import de.iv.ILib;
 import de.iv.game.lasertag.core.API;
-import de.iv.game.lasertag.elements.Weapon;
-import de.iv.game.lasertag.elements.WeaponManager;
-import de.iv.game.lasertag.exceptions.DBIOException;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,6 +1,6 @@
 package de.iv.game.lasertag.events;
 
-import de.iv.game.lasertag.elements.Weapon;
+import de.iv.game.lasertag.game.Weapon;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

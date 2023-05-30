@@ -7,7 +7,6 @@ import java.awt.*;
 public enum WeaponAction {
 
     RAYCAST(),
-    ;
 
 
 }

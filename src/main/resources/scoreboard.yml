@@ -8,7 +8,10 @@ lines:
 # This is a line-entry. It consists of a line number, here '0' and an actual value 'display_value'.
 # The smaller the number, the lower the line.
 # Every line must be UNIQUE or else the plugin will ignore it.
-  12: " "
+  15: " "
+  14: "&7Ulti-XP"
+  13: "&b%ulti_xp%"
+  12: "&r"
   11: "&7Score"
   10: "&5%score%"
   9: "  "

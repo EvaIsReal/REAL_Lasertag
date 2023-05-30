@@ -8,11 +8,19 @@ description: Lasertag minigame
 commands:
   givegun:
     description: Gives you a gun
+    permission: lt.admin
   menu:
     description: Opens the base menu
   inventoryitems:
     aliases:
       - ii
   setlevel:
+    permission: lt.admin
   getlevel:
+    permission: lt.admin
   accreset:
+    permission: lt.admin
+  ltinfo:
+    description: Infomiere dich über den Spielmodus
+  spawn:
+    description: Teleportiere dich zum Spawn

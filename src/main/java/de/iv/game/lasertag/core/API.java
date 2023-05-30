@@ -2,31 +2,49 @@ package de.iv.game.lasertag.core;
 
 import com.google.gson.Gson;
 import de.iv.ILib;
-import de.iv.game.lasertag.elements.GameItem;
-import de.iv.game.lasertag.elements.Weapon;
-import de.iv.game.lasertag.elements.WeaponManager;
+import de.iv.game.lasertag.game.GameItem;
+import de.iv.game.lasertag.game.LTGameProfile;
+import de.iv.game.lasertag.game.Weapon;
+import de.iv.game.lasertag.game.WeaponManager;
 import de.iv.game.lasertag.events.GameXpChangeEvent;
-import de.iv.game.lasertag.events.PlayerGameLevelUpEvent;
+import de.iv.game.lasertag.events.GamePlayerLevelUpEvent;
 import de.iv.game.lasertag.exceptions.RegisterUserException;
 import de.iv.game.lasertag.exceptions.ShopInteractionException;
 import de.iv.game.lasertag.fs.FileManager;
 import de.iv.iutils.sqlite.SQLite;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class API {
 
     private static ArrayList<? extends GameItem> gameItems;
-    private static boolean isSetup = false;
+    public static final ArrayList<LTGameProfile> GAME_PROFILES = new ArrayList<>();
+    public static final HashMap<Player, BukkitTask> playerTasks = new HashMap<>();
+    // private static boolean isSetup = false;
 
     public static void init() {
+        WeaponManager.registerAbilityGuns();
         gameItems = WeaponManager.getActiveWeapons();
+    }
+
+    public static LTGameProfile getGameProfile(Player player) {
+        return GAME_PROFILES.stream().filter(gp -> gp.getPlayer().equals(player)).toList().get(0);
+    }
+
+    public static double getAccumulatedXp(Player player) {
+        return (double) getGameProfile(player).getProperties().get("a_xp");
+    }
+
+    public static void setAccumulatedXp(Player player, double value){
+        getGameProfile(player).getProperties().put("a_xp", value);
     }
 
     public static void registerUser(String uuid) throws RegisterUserException {
@@ -125,9 +143,9 @@ public class API {
                         //key does not exist anymore -> skip key in result
                         res.remove(i);
                     }
-                    System.out.println(res.toString());
+                    System.out.println(res);
                 }
-                SQLite.update("UPDATE playerData SET inventory_items = '"+ res.toString() +"' WHERE uuid = '"+uuid+"'");
+                SQLite.update("UPDATE playerData SET inventory_items = '"+ res +"' WHERE uuid = '"+uuid+"'");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -158,7 +176,7 @@ public class API {
                 GameItem i = getGameItem(key);
                 if(i == null) throw new NullPointerException("No weapon '"+key+"' found");
                 res.add(i.key());
-                SQLite.update("UPDATE playerData SET inventory_items = '"+ res.toString() +"' WHERE uuid = '"+uuid+"'");
+                SQLite.update("UPDATE playerData SET inventory_items = '"+ res +"' WHERE uuid = '"+uuid+"'");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -187,7 +205,7 @@ public class API {
     }
 
     public static void setPlayerLevel(int level, String uuid) {
-        Main.getInstance().getServer().getPluginManager().callEvent(new PlayerGameLevelUpEvent(Bukkit.getPlayer(UUID.fromString(uuid)),
+        Main.getInstance().getServer().getPluginManager().callEvent(new GamePlayerLevelUpEvent(Bukkit.getPlayer(UUID.fromString(uuid)),
                 getPlayerLevel(uuid), level, getPlayerGameScore(uuid)));
         SQLite.update("UPDATE playerData SET level = '"+level+"' WHERE uuid = '"+uuid+"'");
     }

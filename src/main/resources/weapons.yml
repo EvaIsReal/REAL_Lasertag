@@ -45,3 +45,22 @@ Weapons:
 # Marks the weapon as 'default'. Weapons marked as default will be given to the players when they join for the first time.
 # Therefore, none of the default items will be available in the shop menu.
     isDefault: true
+
+  ExampleGunPaid:
+    material: DIAMOND_HOE
+    key: paid_example
+    length: 50
+    color:
+      r: 155
+      g: 78
+      b: 255
+    damage: 4.5
+    particleSize: 0.3
+    soundDistance: 10
+    xpOnKill: 5
+    shopPrice: 1000
+    sound: ENTITY_FIREWORK_ROCKET_BLAST
+    vol: 1
+    pitch: 2
+    cooldownMillis: 1
+    isDefault: false

@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerGameLevelUpEvent extends Event {
+public class GamePlayerLevelUpEvent extends Event {
 
     public static HandlerList handlerList = new HandlerList();
 
@@ -13,7 +13,7 @@ public class PlayerGameLevelUpEvent extends Event {
     private int newLevel;
     private double score;
 
-    public PlayerGameLevelUpEvent(Player player, int oldLevel, int newLevel, double score) {
+    public GamePlayerLevelUpEvent(Player player, int oldLevel, int newLevel, double score) {
         this.player = player;
         this.oldLevel = oldLevel;
         this.newLevel = newLevel;

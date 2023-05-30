@@ -1,14 +1,8 @@
 package de.iv.game.lasertag.listeners;
 
 import de.iv.ILib;
-import de.iv.game.lasertag.core.API;
-import de.iv.game.lasertag.core.Main;
-import de.iv.game.lasertag.core.Uni;
-import de.iv.game.lasertag.events.PlayerGameLevelUpEvent;
-import de.iv.game.lasertag.util.OverlayManager;
-import de.iv.iutils.sqlite.SQLite;
+import de.iv.game.lasertag.events.GamePlayerLevelUpEvent;
 import org.bukkit.Sound;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +10,7 @@ import org.bukkit.event.Listener;
 public class PlayerGameLevelUpListener implements Listener {
 
     @EventHandler
-    public void onLevelUp(PlayerGameLevelUpEvent e) {
+    public void onLevelUp(GamePlayerLevelUpEvent e) {
         Player p = e.getPlayer();
         int oldLevel = e.getOldLevel();
         int newLevel = e.getNewLevel();

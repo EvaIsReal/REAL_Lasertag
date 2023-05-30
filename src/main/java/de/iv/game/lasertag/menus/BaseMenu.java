@@ -6,7 +6,7 @@ import de.iv.game.lasertag.core.Uni;
 import de.iv.iutils.exceptions.ManagerSetupException;
 import de.iv.iutils.exceptions.MenuManagerException;
 import de.iv.iutils.items.ItemBuilder;
-import de.iv.iutils.menus.InventoryMapper;
+import de.iv.iutils.menus.InventoryContext;
 import de.iv.iutils.menus.Menu;
 import de.iv.iutils.menus.MenuManager;
 import org.bukkit.Material;
@@ -18,8 +18,8 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class BaseMenu extends Menu {
 
-    public BaseMenu(InventoryMapper mapper) {
-        super(mapper);
+    public BaseMenu(InventoryContext context) {
+        super(context);
     }
 
     @Override

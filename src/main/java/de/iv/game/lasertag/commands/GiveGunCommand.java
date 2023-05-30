@@ -1,14 +1,13 @@
 package de.iv.game.lasertag.commands;
 
-import de.iv.game.lasertag.elements.Weapon;
-import de.iv.game.lasertag.elements.WeaponManager;
+import de.iv.game.lasertag.game.Weapon;
+import de.iv.game.lasertag.game.WeaponManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

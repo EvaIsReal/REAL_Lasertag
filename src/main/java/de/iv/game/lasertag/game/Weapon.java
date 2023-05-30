@@ -1,4 +1,4 @@
-package de.iv.game.lasertag.elements;
+package de.iv.game.lasertag.game;
 
 import de.iv.ILib;
 import de.iv.game.lasertag.core.Main;
@@ -67,6 +67,7 @@ public class Weapon implements GameItem {
         return getShopPrice();
     }
 
+    @Override
     public ItemStack toItem() {
         ItemStack i = new ItemBuilder(material).setName(ChatColor.GREEN + name).build();
         ItemMeta im = i.getItemMeta();
